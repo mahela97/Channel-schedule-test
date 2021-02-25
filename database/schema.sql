@@ -1,6 +1,6 @@
 
-CREATE DATABASE TV2;
-USE TV2;
+CREATE DATABASE TV_TEST;
+USE TV_TEST;
 
 CREATE TABLE `admin` (
   `email` varchar(255) NOT NULL,
@@ -200,25 +200,5 @@ ALTER TABLE `programtime`
    ADD CONSTRAINT `programtime_ibf_4` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`channel_id`),
   ADD CONSTRAINT `programtime_ibf_3` FOREIGN KEY (`timeslot_id`) REFERENCES `timeslot` (`timeslot_id`);
   
- INSERT INTO `admin` (`email`, `password`, `type`) VALUES ('admin@gmail.com', '$2a$10$R21KJErJ/4F3X34HJiKRFObkdijQbfNnhaepqiqxNhozTxaOWoH56', 'admin');
-  
-  INSERT INTO `timeslot` (`timeslot_id`, `start_time`, `end_time`) VALUES
-(2, '00:00:00', '05:30:00'),
-(3, '05:30:00', '06:30:00'),
-(4, '06:30:00', '06:45:00'),
-(5, '06:45:00', '08:00:00'),
-(6, '08:00:00', '11:00:00'),
-(7, '11:00:00', '12:00:00'),
-(8, '12:00:00', '12:30:00'),
-(9, '12:30:00', '15:30:00'),
-(10, '15:30:00', '18:00:00'),
-(11, '18:00:00', '19:00:00'),
-(12, '19:00:00', '19:30:00'),
-(13, '19:30:00', '20:00:00'),
-(14, '20:00:00', '20:30:00'),
-(15, '20:30:00', '21:00:00'),
-(16, '21:00:00', '21:30:00'),
-(17, '21:30:00', '22:00:00'),
-(18, '22:00:00', '22:30:00'),
-(19, '22:30:00', '00:00:00');
+
 COMMIT;
