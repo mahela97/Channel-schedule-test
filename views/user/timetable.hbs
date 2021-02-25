@@ -1,0 +1,1178 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Page Title -->
+  <title>Broadcasting Cooperation</title>
+
+  <!--bootstrap css-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!--bootsrap js-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+  <!-- Compressed Styles -->
+  <link href="/css/slides.min.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">"
+
+  <!-- jQuery 3.3.1 -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <script src="/js/jquery.min.js"></script>
+
+  <!-- Compressed Scripts -->
+  <script src="/js/slides.min.js" type="text/javascript"></script>
+
+  <!-- Fonts and Material Icons -->
+  <link rel="stylesheet" as="font"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons" />
+  <style>
+    BODY {
+      font-family: Trebuchet MS;
+      margin: 20px;
+      background-color: #600040;
+    }
+
+    .favourite input {
+      display: none;
+    }
+
+    /* .favourite label{
+  cursor: pointer;
+
+}
+
+
+.favourite label::before{
+  content: '\f005';
+  font-family: fontAwesome;
+  position: relative;
+  font-size: 50px;
+  vertical-align: middle;
+  color: white;
+}
+
+.favourite label::after{
+  content: '\f005';
+  font-family: fontAwesome;
+  font-size: 50px;
+  vertical-align: middle;
+  color:yellow;
+  position:absolute;
+  /* top:0px; */
+    /* left: 75.9%;
+  opacity: 0;
+  transition: o.5s;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.favourite label:hover:after,
+.favourite label:hover~label:after,
+.favourite label:checked ~label:after{
+  opacity: 1;
+} */
+
+    H1 {
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    /* .close{
+  position:absolute;
+  top:0px;
+
+} */
+    .bg-model {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      /* opacity: inherit; */
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+
+    .model-content {
+      width: 500px;
+      height: 250px;
+      background-color: white;
+      border-radius: 4px;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .ProgramList {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .ProgramList THEAD {
+      color: #FFFFFF;
+      font-size: 20px;
+    }
+
+
+    .ProgramList TD {
+
+      padding: 6px;
+      text-align: center;
+    }
+
+    table {
+      word-wrap: break-word;
+    }
+
+    .myTimetable {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .myTimetable THEAD {
+      color: #FFFFFF;
+    }
+
+    .break,
+    .lunch {
+      background-color: #FF0066 !important;
+      font-style: italic;
+    }
+
+    .subject {
+      font-size: 10pt;
+      margin-bottom: 4px;
+    }
+
+    .room {
+      font-size: 10pt;
+      font-style: italic;
+    }
+
+    .channel {
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      text-shadow: 2px 2px 10px black;
+    }
+
+    .card_channel {
+      height: 275px;
+      width: 400px;
+      box-shadow: 6px 6px 3px black;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 20px;
+    }
+
+    .container {
+      width: 80% !important;
+    }
+
+
+
+    tbody td {
+      vertical-align: middle;
+    }
+
+    .wrap {
+      width: 100% !important;
+    }
+
+    thead tr th {
+      text-align: center;
+      font-size: 15px;
+      text-shadow: 1px 1px 1px black;
+    }
+
+    .heading {
+      text-shadow: 2px 2px 5px white;
+      text-decoration: underline;
+      margin-bottom: 25px;
+      font-size: 2em;
+      font-weight: bolder;
+    }
+
+    .channel_col {
+      padding-bottom: 75px;
+      margin-bottom: 5opx;
+
+    }
+
+    .card_channel {
+      filter: grayscale(50%);
+      -webkit-filter: grayscale(50%);
+      -o-filter: grayscale(50%);
+      -moz-filter: grayscale(50%);
+      background: url(../assets/img/cards/Channel_1.jpg);
+      background-size: cover;
+
+    }
+
+    .card_channel:nth-child(even) {
+      background-image: url(../assets/img/cards/radio2.jpg) !important;
+    }
+
+    .card_channel:hover {
+      filter: grayscale(0%);
+      -webkit-filter: grayscale(0%);
+      -o-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+
+    }
+
+    .c_body:hover::after {
+      content: "Click the button";
+      margin: auto;
+
+    }
+
+    .button:hover {
+      background-color: black;
+      color: white;
+    }
+
+    table {
+      border-collapse: collapse;
+
+    }
+
+
+    td {
+      border: none;
+      height: 30px;
+    }
+
+    th {
+      background-color: #202020;
+      color: white;
+      text-decoration: none;
+      border-color: white;
+      height: 30px;
+      vertical-align: middle;
+    }
+
+    tbody tr td {
+      padding-left: 10px;
+    }
+
+    tr td:first-child {
+      background-color: #efefef !important;
+      color: black;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      color: black;
+      background-color: #eee;
+    }
+
+    tbody tr:nth-child(odd) {
+      color: black;
+      background-color: white;
+    }
+
+    tfoot tr td {
+      background-color: black !important;
+      color: white;
+      font-weight: bolder;
+      text-align: center;
+      vertical-align: middle;
+      padding-left: 10px;
+      padding-right: 10px;
+
+    }
+
+    /*
+table{
+
+overflow-x:scroll;
+
+}
+*/
+
+    /* Small devices (landscape phones, 576px and up)*/
+    @media (max-width: 576px) {
+
+      .card_channel {
+        width: 250px;
+        height: 200px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      .c_body.c_body:hover::after {
+        padding: 0px;
+        content: " click";
+      }
+
+      .heading {
+        font-size: 1.5em;
+        font-weight: bolder;
+      }
+    }
+
+    /* Medium devices (tablets, 768px and up)*/
+    @media (max-width: 768px) {}
+
+    /* Large devices (desktops, 992px and up)*/
+    @media (max-width: 992px) {}
+
+    /* Extra large devices (large desktops, 1200px and up)*/
+    @media (min-width: 1200px) {}
+  </style>
+</head>
+
+<body class="slides horizontal simplifiedMobile animated">
+
+  <!-- SVG Library -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+    <symbol id="close" viewBox="0 0 30 30">
+      <path
+        d="M15 0c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm5.7 19.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3s-.5-.1-.7-.3l-4.3-4.3-4.3 4.3c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.4-.4-.4-1 0-1.4l4.3-4.3-4.3-4.3c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l4.3 4.3 4.3-4.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-4.3 4.3 4.3 4.3z" />
+    </symbol>
+
+    <symbol id="close-small" viewBox="0 0 11 11">
+      <path
+        d="M6.914 5.5l3.793-3.793c.391-.391.391-1.023 0-1.414s-1.023-.391-1.414 0l-3.793 3.793-3.793-3.793c-.391-.391-1.023-.391-1.414 0s-.391 1.023 0 1.414l3.793 3.793-3.793 3.793c-.391.391-.391 1.023 0 1.414.195.195.451.293.707.293s.512-.098.707-.293l3.793-3.793 3.793 3.793c.195.195.451.293.707.293s.512-.098.707-.293c.391-.391.391-1.023 0-1.414l-3.793-3.793z" />
+    </symbol>
+
+    <symbol id="arrow-left" viewBox="0 0 29 56">
+      <path
+        d="M28.7.3c.4.4.4 1 0 1.4l-26.3 26.3 26.3 26.3c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-27-27c-.4-.4-.4-1 0-1.4l27-27c.3-.3 1-.4 1.4 0z" />
+    </symbol>
+
+    <symbol id="arrow-right" viewBox="0 0 29 56">
+      <path
+        d="M.3 55.7c-.4-.4-.4-1 0-1.4l26.3-26.3-26.3-26.3c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l27 27c.4.4.4 1 0 1.4l-27 27c-.3.3-1 .4-1.4 0z" />
+    </symbol>
+
+    <symbol id="back" viewBox="0 0 20 20">
+      <path
+        d="M2.3 10.7l5 5c.4.4 1 .4 1.4 0s.4-1 0-1.4l-3.3-3.3h11.6c.6 0 1-.4 1-1s-.4-1-1-1h-11.6l3.3-3.3c.4-.4.4-1 0-1.4-.2-.2-.4-.3-.7-.3s-.5.1-.7.3l-5 5c-.2.2-.3.5-.3.7 0 .2.1.5.3.7z" />
+    </symbol>
+
+    <symbol id="menu" viewBox="0 0 18 18">
+      <path
+        d="M16 5h-14c-.6 0-1-.4-1-1 0-.5.4-1 1-1h14c.5 0 1 .4 1 1s-.4 1-1 1zm-14 5h14c.5 0 1-.4 1-1 0-.5-.4-1-1-1h-14c-.6 0-1 .4-1 1s.4 1 1 1zm14 3h-14c-.5 0-1 .4-1 1 0 .5.4 1 1 1h14c.5 0 1-.4 1-1s-.4-1-1-1z" />
+    </symbol>
+
+    <symbol id="share" viewBox="0 0 18 18">
+      <path
+        d="M16 8c-.6 0-1 .4-1 1v6h-12v-6c0-.6-.4-1-1-1s-1 .4-1 1v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-.6-.4-1-1-1zm-2.3-2.3c.4-.4.4-1 0-1.4l-4-4c-.4-.4-1-.4-1.4 0l-4 4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l2.3-2.3v7.6c0 .6.4 1 1 1s1-.4 1-1v-7.6l2.3 2.3c.4.4 1 .4 1.4 0z" />
+    </symbol>
+
+    <symbol id="arrow-down" viewBox="0 0 24 24">
+      <path
+        d="M12 18c-.2 0-.5-.1-.7-.3l-11-10c-.4-.4-.4-1-.1-1.4.4-.4 1-.4 1.4-.1l10.4 9.4 10.3-9.4c.4-.4 1-.3 1.4.1.4.4.3 1-.1 1.4l-11 10c-.1.2-.4.3-.6.3z" />
+    </symbol>
+
+    <symbol id="arrow-up" viewBox="0 0 24 24">
+      <path
+        d="M11.9 5.9c.2 0 .5.1.7.3l11 10c.4.4.4 1 .1 1.4-.4.4-1 .4-1.4.1l-10.4-9.4-10.3 9.4c-.4.4-1 .3-1.4-.1-.4-.4-.3-1 .1-1.4l11-10c.1-.2.4-.3.6-.3z" />
+    </symbol>
+
+    <symbol id="arrow-top" viewBox="0 0 18 18">
+      <path
+        d="M15.7 7.3l-6-6c-.4-.4-1-.4-1.4 0l-6 6c-.4.4-.4 1 0 1.4.4.4 1 .4 1.4 0l4.3-4.3v11.6c0 .6.4 1 1 1s1-.4 1-1v-11.6l4.3 4.3c.2.2.4.3.7.3s.5-.1.7-.3c.4-.4.4-1 0-1.4z" />
+    </symbol>
+
+
+    <!-- social -->
+    <symbol id="facebook" viewBox="0 0 24 24">
+      <path
+        d="M24 1.3v21.3c0 .7-.6 1.3-1.3 1.3h-6.1v-9.3h3.1l.5-3.6h-3.6v-2.2c0-1.1.3-1.8 1.8-1.8h1.9v-3.2c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.7h-3.1v3.6h3.1v9.2h-11.5c-.7 0-1.3-.6-1.3-1.3v-21.4c0-.7.6-1.3 1.3-1.3h21.3c.8 0 1.4.6 1.4 1.3z" />
+    </symbol>
+
+    <symbol id="facebook2" viewBox="0 0 512 512">
+      <path
+        d="M288 176v-64c0-17.664 14.336-32 32-32h32v-80h-64c-53.024 0-96 42.976-96 96v80h-64v80h64v256h96v-256h64l32-80h-96z" />
+    </symbol>
+
+    <symbol id="instagram" viewBox="0 0 20 20">
+      <circle cx="10" cy="10" r="3.3" />
+      <path
+        d="M13,0H7C2.2,0,0,2.2,0,7v6c0,4.8,2.1,7,7,7h6c4.8,0,7-2.2,7-7V7C20,2.2,17.9,0,13,0z M10,15.1c-2.8,0-5.1-2.3-5.1-5.1 S7.2,4.9,10,4.9s5.1,2.3,5.1,5.1S12.8,15.1,10,15.1z M15.3,5.9c-0.7,0-1.2-0.5-1.2-1.2c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2 C16.5,5.3,16,5.9,15.3,5.9z" />
+    </symbol>
+
+    <symbol id="twitter" viewBox="0 1 24 23">
+      <path
+        d="M21.5 7.6v.6c0 6.6-5 14.1-14 14.1-2.8 0-5.4-.8-7.6-2.2l1.2.1c2.3 0 4.4-.8 6.1-2.1-2.2 0-4-1.5-4.6-3.4.3.1.6.1.9.1.5 0 .9-.1 1.3-.2-2.1-.6-3.8-2.6-3.8-5 .7.4 1.4.6 2.2.6-1.3-.9-2.2-2.4-2.2-4.1 0-.9.2-1.8.7-2.5 2.4 3 6.1 5 10.2 5.2-.1-.4-.1-.7-.1-1.1 0-2.7 2.2-5 4.9-5 1.4 0 2.7.6 3.6 1.6 1-.3 2.1-.7 3-1.3-.4 1.2-1.1 2.1-2.2 2.7 1-.1 1.9-.4 2.8-.8-.6 1.1-1.4 2-2.4 2.7z" />
+    </symbol>
+
+
+
+  </svg>
+
+  <!-- Panel Top #05 -->
+  <nav class="panel top">
+    <div class="sections desktop">
+      <div class="left"><a href="/logout" title="Logout">Log out</a></div>
+      <div class="center">
+        <ul class="menu">
+
+          <li>
+            <base href="/"> <a href="/user/home">Home-user</a>
+          </li>
+          <li>
+            <a href="#">Time table</a>
+          </li>
+          <li>
+            <base href="/"><a href="/user/addfeedback">Favourites/Feedback</a>
+          </li>
+          <li>
+            <base href="/"><a href="/user/accountupdates-user">Account Updates</a>
+          </li>
+
+
+        </ul>
+      </div>
+
+    </div>
+    <div class="sections compact hidden">
+      <div class="left"><a href="#" title="Slides Framework"><svg style="width:82px;height:24px">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+          </svg></a></div>
+      <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use>
+          </svg></span< /div>
+      </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" data-sidebar-id="1">
+    <div class="close"><svg>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
+      </svg></div>
+    <div class="content">
+
+      <ul class="mainMenu margin-top-3">
+        <li>
+          <base href="/"> <a href="/user/home">Home-user</a>
+        </li>
+        <li>
+          <a href="#">Time table</a>
+        </li>
+        <li>
+          <base href="/"><a href="/user/addfeedback">Favourites/Feedback</a>
+        </li>
+        <li>
+          <base href="/"><a href="/user/accountupdates-user">Account Updates</a>
+        </li>
+
+      </ul>
+      <ul class="subMenu small opacity-8">
+        <li><a href="#">Our Services</a></li>
+        <li><a href="#">Directions</a></li>
+        <li><a href="#">License</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="social opacity-8">
+        <li><a href="#"><svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
+            </svg></a></li>
+        <li><a href="#"><svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use>
+            </svg></a></li>
+        <li><a href="#"><svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use>
+            </svg></a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Slide 2 -->
+  <section class="slide fade-6 kenBurns" data-name="case">
+    <div class="content">
+      <div class="container">
+        <div class="wrap">
+
+          <!--div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Channel</label>
+            <select class="form-select" id="validationCustom04" name='channel'>
+              <option selected disabled value="">Choose...</option>
+              <div>{{channel.channel}}</div>
+              {{#each channel.channel}}
+              <a href="/timetable/{{this}}">
+                <option value={{this}}><a href="/timetable/{{this}}">
+
+                  </a>{{this}}</option>
+              </a>
+              {{/each}}
+
+            </select>
+          </div -->
+
+
+
+          <!----- Channel Cards ---->
+
+
+
+          {{#if channel.timetable}}
+          <div class="heading"> {{ch}} TV Schedule</div>
+
+          <TABLE class="myTimetable">
+            <THEAD>
+              <TR>
+                <TH></TH>
+                <TH>Monday</TH>
+                <TH>Tuesday</TH>
+                <TH>Wednesday</TH>
+                <TH>Thursday</TH>
+                <TH>Friday</TH>
+                <TH>Saturday</TH>
+                <TH>Sunday</TH>
+              </TR>
+            </THEAD>
+            <TBODY>
+              <TR>
+                <TD>0.00-05.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>05.30-06.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot2.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>06-30-06.45</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot3.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+
+              </TR>
+              <TR>
+                <TD>06-45-08.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot4.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>08.00-11.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot5.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>11.00-12.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot6.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+
+              </TR>
+              <TR>
+                <TD>12.00-12.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot7.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+
+              </TR>
+              <TR>
+                <TD>12.30-15.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot8.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>15.30-18.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot9.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+
+              </TR>
+              <TR>
+                <TD>18.00-19.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot10.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+
+              </TR>
+              <TR>
+                <TD>19.00-19.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot11.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>19.30-20.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot12.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>20.00-20.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot13.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>20.30-21.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot14.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>21.00-21.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot15.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>21.30-22.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot16.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+
+              <TR>
+                <TD>22.00-22.30</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot17.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>22.30-01.00</TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.monday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Tuesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Wednesday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Thursday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Friday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Saturday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+                <TD>
+                  <div class="subject">{{channel.timetable.slot18.Sunday.name}}</div>
+                  <div class="room"></div>
+                </TD>
+              </TR>
+            </TBODY>
+            <TFOOT>
+              <TR>
+                <TD style="background-color: black!important;"></TD>
+                <TD>Monday</TD>
+                <TD>Tuesday</TD>
+                <Td>Wednesday</TD>
+                <TD>Thursday</TD>
+                <TD>Friday</TD>
+                <TD>Saturday</TD>
+                <TD>Sunday</TD>
+              </TR>
+            </TFOOT>
+
+          </TABLE><br><br>
+          {{/if}}
+
+          <div class="cards">
+            <div class="row ">
+              {{#each channel.channel}}
+
+              <div class="col channel_col">
+                <div class="card card_channel"
+                  style="background:url(/assets/img/cards/Channel_1.jpg); background-size :cover;  ">
+                  <div class="card-body">
+                    <span class="channel">
+                      {{this}}
+                    </span>
+                  </div>
+                  <a class="button c_body" href="/user/timetable/{{this}}">
+                    Goto>>
+                  </a>
+                </div>
+              </div>
+
+              {{/each}}
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="background" style="background-image:url(../assets/img/background/image-77.jpg)"></div>
+  </section>
+
+
+
+  <!-- Panel Bottom #01 -->
+  <nav class="panel bottom forceMobileView">
+    <div class="sections desktop">
+      <div class="left"><a href="#" class="opacity-8">Design by <a href="https://freehtml5.co" target="_blank">SE Group
+            10</a></div>
+    </div>
+
+  </nav>
+
+
+
+  <!-- Loading Progress Bar -->
+  <div class="progress-bar blue"></div>
+
+</body>
+
+</html>
