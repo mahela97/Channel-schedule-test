@@ -38,8 +38,8 @@ app.use(
 app.use("/", require("./routes"));
 
 //Listening to the port
-app.listen(process.env.PORT || 5000, () => {
+let server = app.listen(process.env.PORT || 5000, () => {
   console.log(`Server is running on ${process.env.PORT}`);
 });
 
-module.exports = app;
+module.exports = { app, server };
