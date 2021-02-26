@@ -50,14 +50,16 @@ module.exports = {
 
       if (!validPass) {
         return res.redirect(
-          `admin?error=Email or Password is incorrect
-        &email=${body.email}`
+          `admin?error=Email or Password is incorrect &email=${body.email}`
         );
       }
+      console.log(req.session);
       req.session.user_id = email;
       req.session.type = type;
+
       return res.redirect(`admin/home`);
     } catch (err) {
+      console.log(err);
       return res.redirect(
         `admin?error=Cannot connect to the database. Try Again.&email=${body.email}`
       );
