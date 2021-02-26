@@ -17,7 +17,7 @@ describe("/Admin tests", () => {
     res.redirect = jest.fn();
   });
   afterEach(async () => {
-    await server.close();
+    await server;
     res.render = null;
     res.redirect = null;
   });
@@ -66,10 +66,10 @@ describe("/Admin tests", () => {
 
     it("should redirect to admin loginPage if Email is not correct", async () => {
       req.body.email = "notadmin@gmail.com";
-      console.log(req);
+      console.log(server);
       await adminController.loginAdmin(req, res);
       expect(res.redirect).toHaveBeenCalledWith(
-        `admin?error="EMAIL" MUST BE A VALID EMAIL&email=${req.body.email}`
+        `admin?error=Incorrect email=${req.body.email}`
       );
     });
   });

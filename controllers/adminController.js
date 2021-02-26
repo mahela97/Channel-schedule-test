@@ -58,7 +58,6 @@ module.exports = {
       req.session.type = type;
       return res.redirect(`admin/home`);
     } catch (err) {
-      console.log(err);
       return res.redirect(
         `admin?error=Cannot connect to the database. Try Again.&email=${body.email}`
       );

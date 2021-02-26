@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session");
+const pool = require("./config/database");
 const TIME = 1000 * 60 * 10;
 
 dotenv.config();
@@ -37,9 +38,17 @@ app.use(
 //Routes
 app.use("/", require("./routes"));
 
-//Listening to the port
-let server = app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server is running on ${process.env.PORT}`);
+let server;
+
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.log("Error connecting database");
+    console.log(err);
+  } else {
+    server = app.listen(process.env.PORT || 5000, () => {
+      console.log(`Server is running on ${process.env.PORT}`);
+    });
+  }
 });
 
 module.exports = { app, server };
