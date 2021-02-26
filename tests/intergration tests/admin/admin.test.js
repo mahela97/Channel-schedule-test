@@ -30,8 +30,9 @@ describe("/Admin tests", () => {
     it("should return admin Page", async () => {
       const req = {
         query: {},
-        Session: {
-          cookie: {},
+        session: {
+          user_id: null,
+          type: null,
         },
       };
 
@@ -53,6 +54,11 @@ describe("/Admin tests", () => {
           email: "admin@gmail.com",
           password: "123456",
         },
+        query: {},
+        session: {
+          user_id: null,
+          type: null,
+        },
       };
     });
 
@@ -64,13 +70,30 @@ describe("/Admin tests", () => {
       );
     });
 
-    it("should redirect to admin loginPage if Email is not correct", async () => {
+    it("should redirect to admin loginPage if Email is incorrect", async () => {
       req.body.email = "notadmin@gmail.com";
-      console.log(server);
       await adminController.loginAdmin(req, res);
       expect(res.redirect).toHaveBeenCalledWith(
         `admin?error=Incorrect email=${req.body.email}`
       );
+    });
+
+    it("should redirect to admin loginPage if Email or password is incorrect", async () => {
+      req.body.email = "admin@gmail.com";
+      req.body.password = "123456789";
+
+      await adminController.loginAdmin(req, res);
+
+      expect(res.redirect).toHaveBeenCalledWith(
+        `admin?error=Email or Password is incorrect &email=${req.body.email}`
+      );
+    });
+
+    it("should redirect to admin/home if email and password are correct", async () => {
+      await adminController.loginAdmin(req, res);
+      console.log(req);
+
+      expect(res.redirect).toHaveBeenCalledWith("admin/home");
     });
   });
 });
