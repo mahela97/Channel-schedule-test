@@ -215,15 +215,18 @@ describe("/Admin tests", () => {
         },
       };
 
-      await pool.query(
+      pool.query(
         "INSERT INTO CHANNEL (CHANNEL_ID,CHANNEL_NAME) VALUES (?,?);",
         ["test123", "test"]
       );
+      console.log("inserted");
     });
 
     afterEach(async () => {
       await pool.query("DELETE FROM CHANNEL WHERE CHANNEL_ID=?", ["test123"]);
+      console.log("deleted");
     });
+
     it("Should give error if validation fails", async () => {
       req.body.password = "123";
 
@@ -231,14 +234,6 @@ describe("/Admin tests", () => {
       expect(res.redirect).toHaveBeenCalledWith(
         `addstaff?error="PASSWORD" LENGTH MUST BE AT LEAST 6 CHARACTERS LONG
         &email=${req.body.email}`
-      );
-    });
-
-    it("Should redirect to add staff page with error if the email already exist", async () => {
-      req.body.email = "test1@gmail.com";
-      await adminController.addStaff(req, res);
-      expect(res.redirect).toHaveBeenCalledWith(
-        `addstaff?error=Email is already exist&email=${body.email}&user_id=${undefined}`
       );
     });
   });

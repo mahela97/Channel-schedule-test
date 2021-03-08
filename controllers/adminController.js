@@ -138,7 +138,6 @@ module.exports = {
   //ADDING STAFF TO A CHANNEL
   addStaff: async (req, res) => {
     const body = req.body;
-    console.log("gg");
     const { error } = staffRegisterValidation(body);
     if (error) {
       return res.redirect(
@@ -155,7 +154,7 @@ module.exports = {
     if (!isChannelExist) {
       return res.redirect(`addstaff?error=There is no channel with that ID`);
     } else {
-      createStaffMember(body, (err, result) => {
+      await createStaffMember(body, (err, result) => {
         {
           if (err) {
             if (err.code == "ER_DUP_ENTRY") {
