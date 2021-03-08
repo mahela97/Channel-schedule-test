@@ -2,6 +2,18 @@
  
  INSERT INTO `admin` (`email`, `password`, `type`) VALUES ('admin@gmail.com', '$2a$10$R21KJErJ/4F3X34HJiKRFObkdijQbfNnhaepqiqxNhozTxaOWoH56', 'admin');
   
+---------------------------------------------
+--TEST CHANNEL--
+insert into channel (channel_id,channel_name) values ('test1123','test1');
+
+
+
+----------------------------------------------
+--TEST USER--
+INSERT INTO user (first_name,last_name,type,pet,color,email, password) VALUES ( "testFirstName1","testLastName2","staff","red","blue","test1@gmail.com",'$2a$10$R21KJErJ/4F3X34HJiKRFObkdijQbfNnhaepqiqxNhozTxaOWoH56');
+INSERT INTO STAFF (user_id,channeld_id) VALUES ((SELECT USER_ID FROM USER WHERE email="test1@gmail.com"),"test1123");
+-----------------------------------------------
+
   INSERT INTO `timeslot` (`timeslot_id`, `start_time`, `end_time`) VALUES
 (2, '00:00:00', '05:30:00'),
 (3, '05:30:00', '06:30:00'),

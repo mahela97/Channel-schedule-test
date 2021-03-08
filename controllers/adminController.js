@@ -53,13 +53,11 @@ module.exports = {
           `admin?error=Email or Password is incorrect &email=${body.email}`
         );
       }
-      console.log(req.session);
       req.session.user_id = email;
       req.session.type = type;
 
       return res.redirect(`admin/home`);
     } catch (err) {
-      console.log(err);
       return res.redirect(
         `admin?error=Cannot connect to the database. Try Again.&email=${body.email}`
       );
@@ -140,6 +138,7 @@ module.exports = {
   //ADDING STAFF TO A CHANNEL
   addStaff: async (req, res) => {
     const body = req.body;
+    console.log("gg");
     const { error } = staffRegisterValidation(body);
     if (error) {
       return res.redirect(
@@ -165,9 +164,7 @@ module.exports = {
               );
             } else {
               return res.redirect(
-                console.log(
-                  err
-                )`addstaff?error=Cannot connect to the database. Try again.=${body.email}&user_id=${body.user_id}`
+                `addstaff?error=Cannot connect to the database. Try again.=${body.email}&user_id=${body.user_id}`
               );
             }
           } else {
