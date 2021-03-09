@@ -1,7 +1,5 @@
 const adminController = require("../../../controllers/adminController");
 const request = require("supertest");
-const { post } = require("../../../routes");
-const { getChannel } = require("../../../models/adminModel");
 
 let server;
 let pool;
@@ -13,19 +11,19 @@ describe("/Admin tests", () => {
   };
 
   beforeEach(async () => {
-    server = await require("../../../index").server;
+    server = require("../../../index").server;
     pool = require("../../../config/database");
     res.render = jest.fn();
     res.redirect = jest.fn();
   });
   afterEach(async () => {
-    await server;
     res.render = null;
     res.redirect = null;
+    server.close();
   });
 
   afterAll(async () => {
-    //await pool.end();
+    await pool.end();
   });
 
   describe("GET /admin Admin page view render test", () => {
@@ -93,7 +91,6 @@ describe("/Admin tests", () => {
 
     it("Should redirect to admin/home if email and password are correct", async () => {
       await adminController.loginAdmin(req, res);
-
       expect(res.redirect).toHaveBeenCalledWith("admin/home");
     });
   });
@@ -159,21 +156,6 @@ describe("/Admin tests", () => {
     });
   });
 
-  describe("GET admin/accountupdates Admin update account page view render test", () => {
-    it("Should render admin update account page", async () => {
-      const req = {
-        query: {},
-        Session: {
-          user_id: "admin@gmail.com",
-          type: "admin",
-        },
-      };
-
-      await adminController.accountUpdatePage(req, res);
-      expect(res.render).toHaveBeenCalledWith("admin/accountupdates");
-    });
-  });
-
   describe("GET admin/addStaffPage Admin add staff page view render", () => {
     it("Should render Admin add staff page", async () => {
       const req = {
@@ -219,12 +201,10 @@ describe("/Admin tests", () => {
         "INSERT INTO CHANNEL (CHANNEL_ID,CHANNEL_NAME) VALUES (?,?);",
         ["test123", "test"]
       );
-      console.log("inserted");
     });
 
     afterEach(async () => {
       await pool.query("DELETE FROM CHANNEL WHERE CHANNEL_ID=?", ["test123"]);
-      console.log("deleted");
     });
 
     it("Should give error if validation fails", async () => {

@@ -9,10 +9,16 @@ insert into channel (channel_id,channel_name) values ('test1123','test1');
 
 
 ----------------------------------------------
---TEST USER--
+--TEST STAFF USER --
 INSERT INTO user (first_name,last_name,type,pet,color,email, password) VALUES ( "testFirstName1","testLastName2","staff","red","blue","test1@gmail.com",'$2a$10$R21KJErJ/4F3X34HJiKRFObkdijQbfNnhaepqiqxNhozTxaOWoH56');
 INSERT INTO STAFF (user_id,channeld_id) VALUES ((SELECT USER_ID FROM USER WHERE email="test1@gmail.com"),"test1123");
 -----------------------------------------------
+--TEST USER--
+INSERT INTO user (first_name,last_name,type,pet,color,email, password) VALUES ( "User1Recover","User1Last","user","$2a$10$1mE0nPTqxO7aDsPauppvh.GO1zDpIdBXdK8L9931m7xnTxWkloe82","$2a$10$1mE0nPTqxO7aDsPauppvh.50Ck2XEWH8XJuq4I4n4gZXVQmoGgGLu","testrecover@gmail.com",'$2a$10$Tv3lPEyDnzTMnX7wR/O6xeBNAJ9gPDdoiAk4fLHtZzNFXO9gibKK.');
+
+
+--------------------------------------------------
+
 
   INSERT INTO `timeslot` (`timeslot_id`, `start_time`, `end_time`) VALUES
 (2, '00:00:00', '05:30:00'),

@@ -38,17 +38,8 @@ app.use(
 //Routes
 app.use("/", require("./routes"));
 
-let server;
-
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.log("Error connecting database");
-    console.log(err);
-  } else {
-    server = app.listen(process.env.PORT || 5000, () => {
-      console.log(`Server is running on ${process.env.PORT}`);
-    });
-  }
+const server = app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server is running on ${process.env.PORT}`);
 });
 
 module.exports = { app, server };

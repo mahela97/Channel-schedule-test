@@ -64,38 +64,9 @@ module.exports = {
     }
   },
 
-  //Registering a admin
-  addAdmin: async (req, res) => {
-    const body = req.body;
-    const { error } = userLoginValidation(req.body);
-    if (error) {
-      return res.send(error.details[0].message.toUpperCase());
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    body.password = await bcrypt.hash(body.password, salt);
-
-    createAdmin(body, (err, result) => {
-      if (err) {
-        if (err.code == "ER_DUP_ENTRY") {
-          return res.send(`Email is already exist`);
-        } else {
-          return res.send(`Cannot connect to the database.`);
-        }
-      } else {
-        return res.send("success");
-      }
-    });
-  },
-
   //RENDERING ADMIN HOMEPAGE
   adminHomepage: (req, res) => {
     return res.render("admin/home-admin");
-  },
-
-  //RENDER ADMIN CHANNEL LIST
-  channelListPage: (req, res) => {
-    return res.render("admin/channellist");
   },
 
   //RENDER ADMIN ADD CHANNEL
@@ -107,21 +78,12 @@ module.exports = {
   adminAddChannel: async (req, res) => {
     const body = req.body;
     const result = await getChannel(body.channelname);
-    if (result.channel_id) {
-      res.redirect(`addchannel?error=Use an another name please.`);
-    } else {
-      try {
-        const status = await addChannel(body);
-        res.redirect(`addchannel?Success`);
-      } catch (err) {
-        res.redirect(`addchannel?error`);
-      }
+    try {
+      const status = await addChannel(body);
+      res.redirect(`addchannel?Success`);
+    } catch (err) {
+      res.redirect(`addchannel?error`);
     }
-  },
-
-  //RENDER ACCOUNT UPDATES
-  accountUpdatePage: (req, res) => {
-    return res.render("admin/accountupdates");
   },
 
   //RENDER ADD STAFF ACCOUNT
@@ -154,7 +116,7 @@ module.exports = {
     if (!isChannelExist) {
       return res.redirect(`addstaff?error=There is no channel with that ID`);
     } else {
-      await createStaffMember(body, (err, result) => {
+      createStaffMember(body, (err, result) => {
         {
           if (err) {
             if (err.code == "ER_DUP_ENTRY") {

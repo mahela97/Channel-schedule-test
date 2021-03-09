@@ -101,15 +101,11 @@ module.exports = {
 
     const salt = await bcrypt.genSalt(10);
     body.password = await bcrypt.hash(body.password, salt);
-    body.email = req.session.email;
+
     try {
-      const update = await saveNewPassword(body, (err, result) => {
-        if (err) {
-          return res.redirect(`changepw?error=Error`);
-        } else {
-          return res.redirect("/login");
-        }
-      });
+      body.email = req.session.email;
+      const update = saveNewPassword(body);
+      return res.redirect("/login");
     } catch (err) {
       return res.redirect(`changepw?error=Cannot connect to the database`);
     }

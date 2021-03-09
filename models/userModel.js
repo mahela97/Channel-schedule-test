@@ -26,18 +26,11 @@ module.exports = {
     );
   },
   //SAVE PASSWORD
-  saveNewPassword: (data, callBack) => {
-    pool.query(
-      `update user set password=? where email=?;`,
-      [data.password, data.email],
-      (err, result) => {
-        if (err) {
-          return callBack(err);
-        } else {
-          return callBack(null, result);
-        }
-      }
-    );
+  saveNewPassword: (data) => {
+    pool.query(`update user set password=? where email=?;`, [
+      data.password,
+      data.email,
+    ]);
   },
 
   //FIND USER BY EMAIL
@@ -343,14 +336,19 @@ module.exports = {
             reject(err);
           } else {
             var program = {};
-             var feed = {};
+            var feed = {};
             const fre = result;
             for (j = 0; j < fre.length; j++) {
               var pro = "program" + j;
               const prId = fre[j].program_id;
               const prname = fre[j].program_name;
-              
-              program[pro] = { name: prname, id: prId, fav: result[j].userid, feedback: result[j].feedback };
+
+              program[pro] = {
+                name: prname,
+                id: prId,
+                fav: result[j].userid,
+                feedback: result[j].feedback,
+              };
               console.log(program);
             }
 
