@@ -2,9 +2,12 @@ const pool = require("../config/database");
 
 module.exports = {
   //ADD USER TO THE DATABASE
-  createRegisteredUser: (data, callBack) => {
-    pool.query(
-      `
+  createRegisteredUser: async (data) => {
+    
+
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `
         INSERT INTO user (first_name,last_name,type,pet,color,email, password) VALUES (?,?,?,?,?,?,?);
         `,
       [
@@ -16,21 +19,35 @@ module.exports = {
         data.email,
         data.password,
       ],
-      (err, result) => {
-        if (err) {
-          return callBack(err);
-        } else {
-          return callBack(null, result);
+        (err, result) => {
+          if (err) {
+            
+            reject(err);
+          } else {
+            resolve(result);
+          }
         }
-      }
-    );
+      );
+    });
   },
   //SAVE PASSWORD
   saveNewPassword: (data) => {
-    pool.query(`update user set password=? where email=?;`, [
-      data.password,
-      data.email,
-    ]);
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM user WHERE email=?', data.email, (err, res) => {
+        if(res.length>0){
+          pool.query(`update user set password=? where email=?;`, [
+            data.password,
+            data.email,
+          ], (err, result) => {
+            
+            resolve(result);
+          });
+        }else{
+          
+          reject('Not Updated');
+        }
+      })
+    });
   },
 
   //FIND USER BY EMAIL
