@@ -39,24 +39,19 @@ module.exports = {
 
     const salt = await bcrypt.genSalt(10);
     body.password = await bcrypt.hash(body.password, salt);
-    body.firstq = await bcrypt.hash(body.firstq, salt);
+    body.firstq = await bcrypt.hash(body.firstq, salt);             
     body.secq = await bcrypt.hash(body.secq, salt);
-
-    createRegisteredUser(body, (err, result) => {
-      if (err) {
-        if (err.code == "ER_DUP_ENTRY") {
-          return res.redirect(
-            `register?error=Email is already exist&email=${body.email}&user_id=${body.user_id}`
-          );
-        } else {
-          return res.redirect(
-            `register?error=Cannot connect to the database. Try again.=${body.email}&user_id=${body.user_id}`
-          );
-        }
-      } else {
-        return res.redirect("/login");
-      }
-    });
+    try{
+      const result = await createRegisteredUser(body);
+      return res.redirect("/login");
+    }catch (err){
+      return res.redirect(
+          `register?error=Email is already exist&email=${body.email}&user_id=${body.user_id}`
+        );
+      
+    }
+    
+    
   },
 
   //ACCOUNT UPDATE PAGE
@@ -75,18 +70,14 @@ module.exports = {
     const salt = await bcrypt.genSalt(10);
     body.password = await bcrypt.hash(body.password, salt);
     body.email = req.session.user_id;
-    try {
-      const update = await saveNewPassword(body, (err, result) => {
-        if (err) {
-          return res.redirect(`accountupdates-user?error=Error`);
-        } else {
-          return res.redirect("accountupdates-user?status=Success");
-        }
-      });
-    } catch (err) {
-      return res.redirect(
-        `accountupdates-user?error=Cannot connect to the database`
-      );
+    try{
+      const update = await saveNewPassword(body)
+      return res.redirect("accountupdates-user?status=Success");
+    }catch(e){
+     
+      return res.redirect("accountupdates-user?status=Error");
     }
+      
+    
   },
 };
